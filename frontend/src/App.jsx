@@ -1,44 +1,32 @@
-/*import Dashboard from "./pages/Dashboard";
+/*
+App.jsx
 
-function App() {
-  return <Dashboard />;
-}
-
-export default App;*/
-
-/*import Orders from "./pages/Orders";
-
-function App() {
-  return <Orders />;
-}
-
-export default App;*/
-
-/*import CreateOrder from "./pages/CreateOrder";
-
-function App() {
-  return <CreateOrder />;
-}
+This file manages application routing and navigation.
+It connects the Dashboard, Orders, and Create Order pages
+using React Router.
 */
 
+//Import react router components
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
+// Import page components
 import Dashboard from "./pages/Dashboard";
 import Orders from "./pages/Orders";
 import CreateOrder from "./pages/CreateOrder";
 
 function App() {
   return (
+    //BrowserRouter to enable routing in the app
     <BrowserRouter>
       <div>
-        <nav
+        <nav //Navigation bar
           style={{
             padding: "20px",
             backgroundColor: "#2563eb",
             color: "white",
           }}
         >
-          <Link
+          <Link // link to dashboard page
             to="/"
             style={{
               color: "white",
@@ -60,7 +48,7 @@ function App() {
             Orders
           </Link>
 
-          <Link
+          <Link // link to create order page
             to="/create-order"
             style={{
               color: "white",
@@ -72,9 +60,9 @@ function App() {
         </nav>
 
         <Routes>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/orders" element={<Orders />} />
-          <Route path="/create-order" element={<CreateOrder />} />
+          <Route path="/" element={<Dashboard />} /> {/* Route for dashboard page */}
+          <Route path="/orders" element={<Orders />} /> {/* Route for orders page */}
+          <Route path="/create-order" element={<CreateOrder />} /> {/* Route for create order page */}
         </Routes>
       </div>
     </BrowserRouter>

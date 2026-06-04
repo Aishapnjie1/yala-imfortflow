@@ -1,86 +1,29 @@
-/*function CreateOrder() {
-  return (
-    <div>
-      <h1>Create Order</h1>
+/*
+CreateOrder.jsx
 
-      <form>
-        <div>
-          <label>Supplier Name</label>
-          <br />
-          <input type="text" />
-        </div>
+This page allows users to create a new import order.
+Form data is submitted to the backend API and saved
+to the orders list.
+*/
 
-        <br />
-
-        <div>
-          <label>Country</label>
-          <br />
-          <input type="text" />
-        </div>
-
-        <br />
-
-        <div>
-          <label>Product Name</label>
-          <br />
-          <input type="text" />
-        </div>
-
-        <br />
-
-        <div>
-          <label>Quantity</label>
-          <br />
-          <input type="number" />
-        </div>
-
-        <br />
-
-        <div>
-          <label>Unit Cost</label>
-          <br />
-          <input type="number" />
-        </div>
-
-        <br />
-
-        <div>
-          <label>Shipping Cost</label>
-          <br />
-          <input type="number" />
-        </div>
-
-        <br />
-
-        <div>
-          <label>Customs Cost</label>
-          <br />
-          <input type="number" />
-        </div>
-
-        <br />
-
-        <button type="submit">Create Order</button>
-      </form>
-    </div>
-  );
-}
-
-export default CreateOrder;*/
+//import react state hook
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import API from "../services/api";
+import { useNavigate } from "react-router-dom"; //import navigate hook from react router
+import API from "../services/api"; // import API instance
 
 function CreateOrder() {
-  const navigate = useNavigate();
+  const navigate = useNavigate(); //allows navigation to another page after creating an order
 
+  //state variables for form inputs
   const [supplier, setSupplier] = useState("");
   const [product, setProduct] = useState("");
   const [cost, setCost] = useState("");
 
+  //handle from submission
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); //prevent page refresh
 
+    //create new order object usisng data
     const newOrder = {
       supplier,
       product,
@@ -89,18 +32,20 @@ function CreateOrder() {
     };
 
     try {
-      await API.post("/orders", newOrder);
+      await API.post("/orders", newOrder); // send order data to backend API
 
-      alert("Order created successfully!");
+      alert("Order created successfully!"); //dispaly success message
 
+      //clear form feilds after successful submission
       setSupplier("");
       setProduct("");
       setCost("");
 
+      //redirect usser to order page
       navigate("/orders");
     } catch (error) {
-      console.error(error);
-      alert("Failed to create order");
+      console.error(error); // for debigging
+      alert("Failed to create order"); // error message
     }
   };
 
@@ -112,6 +57,7 @@ function CreateOrder() {
         justifyContent: "center",
       }}
     >
+      {/*form container card */}
       <div
         style={{
           width: "500px",
@@ -122,7 +68,7 @@ function CreateOrder() {
         }}
       >
         <h1>Create Order</h1>
-
+        {/*form submission and supplier name input */}
         <form onSubmit={handleSubmit}>
           <div style={{ marginBottom: "15px" }}>
             <label>Supplier Name</label>
@@ -137,7 +83,7 @@ function CreateOrder() {
               }}
             />
           </div>
-
+              {/*product name input */}
           <div style={{ marginBottom: "15px" }}>
             <label>Product Name</label>
             <input
@@ -151,7 +97,7 @@ function CreateOrder() {
               }}
             />
           </div>
-
+              {/*total cost input */}
           <div style={{ marginBottom: "20px" }}>
             <label>Total Cost</label>
             <input
@@ -165,7 +111,7 @@ function CreateOrder() {
               }}
             />
           </div>
-
+              {/*create order button */}
           <button
             type="submit"
             style={{
