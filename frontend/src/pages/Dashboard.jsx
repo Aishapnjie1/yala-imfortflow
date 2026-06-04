@@ -6,8 +6,6 @@ total orders, orders in transit, delivered orders,
 and total import value.
 */
 
-export default Dashboard;
-
 // Import React hooks
 import { useEffect, useState } from "react";
 
@@ -15,7 +13,6 @@ import { useEffect, useState } from "react";
 import API from "../services/api";
 
 function Dashboard() {
-
   // Store order data retrieved from backend
   const [orders, setOrders] = useState([]);
 
@@ -27,15 +24,12 @@ function Dashboard() {
   // Retrieve orders from backend API
   const fetchOrders = async () => {
     try {
-
       // Send GET request to backend
       const response = await API.get("/orders");
 
       // Save orders into state
       setOrders(response.data);
-
     } catch (error) {
-
       // Display error in console
       console.error("Error fetching orders:", error);
     }
@@ -62,7 +56,6 @@ function Dashboard() {
 
   return (
     <div style={{ padding: "20px" }}>
-
       {/* Dashboard title */}
       <h1>ImportFlow Dashboard</h1>
 
@@ -75,7 +68,6 @@ function Dashboard() {
           flexWrap: "wrap",
         }}
       >
-
         {/* Total Orders Card */}
         <div
           style={{
@@ -135,7 +127,6 @@ function Dashboard() {
             ${totalImportValue}
           </p>
         </div>
-
       </div>
     </div>
   );
