@@ -105,48 +105,84 @@ function CreateOrder() {
   };
 
   return (
-    <div>
-      <h1>Create Order</h1>
+    <div
+      style={{
+        padding: "30px",
+        display: "flex",
+        justifyContent: "center",
+      }}
+    >
+      <div
+        style={{
+          width: "500px",
+          border: "1px solid #ddd",
+          borderRadius: "10px",
+          padding: "30px",
+          boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+        }}
+      >
+        <h1>Create Order</h1>
 
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Supplier Name</label>
-          <br />
-          <input
-            type="text"
-            value={supplier}
-            onChange={(e) => setSupplier(e.target.value)}
-          />
-        </div>
+        <form onSubmit={handleSubmit}>
+          <div style={{ marginBottom: "15px" }}>
+            <label>Supplier Name</label>
+            <input
+              type="text"
+              value={supplier}
+              onChange={(e) => setSupplier(e.target.value)}
+              style={{
+                width: "100%",
+                padding: "10px",
+                marginTop: "5px",
+              }}
+            />
+          </div>
 
-        <br />
+          <div style={{ marginBottom: "15px" }}>
+            <label>Product Name</label>
+            <input
+              type="text"
+              value={product}
+              onChange={(e) => setProduct(e.target.value)}
+              style={{
+                width: "100%",
+                padding: "10px",
+                marginTop: "5px",
+              }}
+            />
+          </div>
 
-        <div>
-          <label>Product Name</label>
-          <br />
-          <input
-            type="text"
-            value={product}
-            onChange={(e) => setProduct(e.target.value)}
-          />
-        </div>
+          <div style={{ marginBottom: "20px" }}>
+            <label>Total Cost</label>
+            <input
+              type="number"
+              value={cost}
+              onChange={(e) => setCost(e.target.value)}
+              style={{
+                width: "100%",
+                padding: "10px",
+                marginTop: "5px",
+              }}
+            />
+          </div>
 
-        <br />
-
-        <div>
-          <label>Total Cost</label>
-          <br />
-          <input
-            type="number"
-            value={cost}
-            onChange={(e) => setCost(e.target.value)}
-          />
-        </div>
-
-        <br />
-
-        <button type="submit">Create Order</button>
-      </form>
+          <button
+            type="submit"
+            style={{
+              backgroundColor: "#2563eb",
+              color: "white",
+              border: "none",
+              padding: "12px 20px",
+              borderRadius: "5px",
+              cursor: "pointer",
+              width: "100%",
+              fontSize: "16px",
+            }}
+          >
+            Create Order
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
